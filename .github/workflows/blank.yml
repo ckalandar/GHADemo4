@@ -18,10 +18,13 @@ jobs:
       matrix:
         version: [10]
         names: ['test1' ,'test2']
+    # condition     
+    #if: ${{ github.ref == 'refs/heads/main' }}  
+    if: github.repository == 'ckalandar/GHADemo4' 
     runs-on: ubuntu-latest
     env:
       Day: monday
-      name: shubham
+      name: Kalandar
       company: acccenture
     steps:
       - name: varibles
