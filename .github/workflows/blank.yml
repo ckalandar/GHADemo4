@@ -13,10 +13,20 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
-  run_if_failure:
-    if: ${{ !github.event.client_payload.passed }}
+  example_matrix:
+    strategy:
+      matrix:
+        version: [10]
+        names: ['test1' ,'test2']
     runs-on: ubuntu-latest
+    env:
+      Day: monday
+      name: shubham
+      company: acccenture
     steps:
-      - env:
-          MESSAGE: ${{ github.event.client_payload.message }}
-        run: echo $MESSAGE
+      - name: varibles
+        run: echo "my name is $name. Day is $Day and Company is $company refrenece of $GITHUB_REF and $github.event	"
+      - name: matrixa
+        run: echo ${{matrix.version}} 
+      - name: test  
+        run: echo ${{matrix.names}} 
